@@ -1,14 +1,15 @@
 import { NextRequest } from 'next/server'
-import { ApiResponse } from '@/lib/backend/api-response'
+import { ApiResponse } from '@/lib/backend/apiResponse'
 import prisma from '@/lib/prisma'
 import { createAccessToken, validatePassword } from '@/lib/backend/auth'
 import { cookies } from 'next/headers'
-import { authMessages, getLanguage } from '@/data/messages'
+import { getLanguage } from '@/lib/backend/serverCookie'
+import { authApiData } from '@/data'
 
 export const POST = async (req: NextRequest) => {
 	try {
 		const lang = await getLanguage()
-		const vm = authMessages.validation[lang]
+		const vm = authApiData[lang]
 		const cookiesStore = await cookies()
 		const { email, password } = await req.json()
 		if (!email || !password) {
@@ -42,7 +43,17 @@ export const POST = async (req: NextRequest) => {
 			'user',
 			JSON.stringify({ id: user.id, email: user.email, name: user.name, role: user.role }),
 		)
-		return ApiResponse(true, vm.userLoggedIn, 200, [{ user, accessToken }])
+		return ApiResponse(true, vm.userLoggedIn, 200, [
+			{
+				user: {
+					id: user.id,
+					email: user.email,
+					name: user.name,
+					role: user.role,
+				},
+				accessToken,
+			},
+		])
 	} catch (error) {
 		console.log('error', error)
 		return ApiResponse(false, 'Internal server error', 500, [error])
