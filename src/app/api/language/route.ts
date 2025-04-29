@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { cookies } from 'next/headers'
-import { ApiResponse } from '@/lib/backend/api-response'
+import { ApiResponse } from '@/lib/backend/apiResponse'
 
 export const POST = async (req: NextRequest) => {
 	const { lang } = await req.json()
