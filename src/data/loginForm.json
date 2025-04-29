@@ -1,0 +1,24 @@
+{
+  "en": {
+    "title": "Login",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "emailError": "Please enter a valid email",
+    "password": "Password",
+    "passwordPlaceholder": "Password",
+    "passwordError": "Password must be at least 6 characters",
+    "login": "Login",
+    "loading": "Please wait..."
+  },
+  "ur": {
+    "title": "لاگ ان کریں",
+    "email": "ای میل",
+    "emailPlaceholder": "you@example.com",
+    "emailError": "براہ کرم درست ای میل درج کریں",
+    "password": "پاس ورڈ",
+    "passwordPlaceholder": "پاس ورڈ",
+    "passwordError": "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے",
+    "login": "لاگ ان کریں",
+    "loading": "براہ کرم انتظار کریں..."
+  }
+}
