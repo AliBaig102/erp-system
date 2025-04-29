@@ -1,14 +1,15 @@
 import { NextRequest } from 'next/server'
-import { ApiResponse } from '@/lib/backend/api-response'
+import { ApiResponse } from '@/lib/backend/apiResponse'
 import prisma from '@/lib/prisma'
 import { hashPassword } from '@/lib/backend/auth'
-import { authMessages, getLanguage } from '@/data/messages'
+import {  getLanguage } from '@/lib/backend/serverCookie'
+import { authApiData } from '@/data'
 
 export const POST = async (req: NextRequest) => {
 	try {
 		const { name, email, password } = await req.json()
 		const lang = await getLanguage()
-		const vm = authMessages.validation[lang]
+		const vm = authApiData[lang]
 		if (!name || !email || !password) {
 			return ApiResponse(false, vm.requiredFields, 400, [])
 		}
