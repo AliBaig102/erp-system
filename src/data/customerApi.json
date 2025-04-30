@@ -1,0 +1,50 @@
+{
+  "all": {
+    "en": {
+      "notFound": "No customers found",
+      "found": "Customers found"
+    },
+    "ur": {
+      "notFound": "کوئی صارف نہیں ملا",
+      "found": "صارف ملا"
+    }
+  },
+  "create": {
+    "en": {
+      "created": "Customer created successfully",
+      "requiredName": "Name is required"
+    },
+    "ur": {
+      "created": "صارف کامیابی سے بنایا گیا",
+      "requiredName": "نام کو بھرنا ضروری ہے"
+    }
+  },
+  "byId": {
+    "en": {
+      "notFound": "Customer not found",
+      "found": "Customer found"
+    },
+    "ur": {
+      "notFound": "صارف نہیں ملا",
+      "found": "صارف ملا"
+    }
+  },
+  "update": {
+    "en": {
+      "updated": "Customer updated successfully",
+      "requiredName": "Name is required"
+    },
+    "ur": {
+      "updated": "صارف کامیابی سے بنایا گیا",
+      "requiredName": "نام کو بھرنا ضروری ہے"
+    }
+  },
+  "delete": {
+    "en": {
+      "deleted": "Customer deleted successfully"
+    },
+    "ur": {
+      "deleted": "صارف کامیابی سے حذف ہوا"
+    }
+  }
+}

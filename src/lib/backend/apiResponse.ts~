@@ -12,7 +12,7 @@ export const ApiResponse = (
 			status,
 			message,
 			data,
-			...extraData,
+			extraData,
 		},
 		{
 			status: statusCode,

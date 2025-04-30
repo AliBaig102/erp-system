@@ -6,7 +6,8 @@
     "userExists": "User already exists",
     "userCreated": "User created successfully",
     "userNotFound": "User not found",
-    "userLoggedIn": "User logged in successfully"
+    "userLoggedIn": "User logged in successfully",
+    "userLoggedOut": "User logged out successfully"
   },
   "ur": {
     "requiredFields": "تمام فیلڈز کو بھرنا ضروری ہے",
@@ -15,6 +16,7 @@
     "userExists": "صارف پہلے سے موجود ہے",
     "userCreated": "صارف کامیابی سے بنایا گیا",
     "userNotFound": "صارف نہیں ملا",
-    "userLoggedIn": "صارف کامیابی سے لاگ اِن ہوا"
+    "userLoggedIn": "صارف کامیابی سے لاگ اِن ہوا",
+    "userLoggedOut": "صارف کامیابی سے لاگ اُٹ ہوا"
   }
 }
