@@ -29,4 +29,18 @@ model User {
   accessToken       String?
   accessTokenExpiry DateTime?
   createdAt         DateTime  @default(now())
+
+  Customer Customer[]
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String?
+  phone     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }
