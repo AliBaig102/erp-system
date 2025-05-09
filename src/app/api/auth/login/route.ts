@@ -43,17 +43,15 @@ export const POST = async (req: NextRequest) => {
 			'user',
 			JSON.stringify({ id: user.id, email: user.email, name: user.name, role: user.role }),
 		)
-		return ApiResponse(true, vm.userLoggedIn, 200, [
-			{
-				user: {
-					id: user.id,
-					email: user.email,
-					name: user.name,
-					role: user.role,
-				},
-				accessToken,
+		return ApiResponse(true, vm.userLoggedIn, 200, {
+			user: {
+				id: user.id,
+				email: user.email,
+				name: user.name,
+				role: user.role,
 			},
-		])
+			accessToken,
+		})
 	} catch (error) {
 		console.log('error', error)
 		return ApiResponse(false, 'Internal server error', 500, [error])
