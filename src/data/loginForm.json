@@ -7,7 +7,6 @@
     "password": "Password",
     "passwordPlaceholder": "Password",
     "passwordError": "Password must be at least 6 characters",
-    "login": "Login",
     "loading": "Please wait..."
   },
   "ur": {
@@ -18,7 +17,6 @@
     "password": "پاس ورڈ",
     "passwordPlaceholder": "پاس ورڈ",
     "passwordError": "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے",
-    "login": "لاگ ان کریں",
     "loading": "براہ کرم انتظار کریں..."
   }
 }
