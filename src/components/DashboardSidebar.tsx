@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/sidebar'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
+import { useAuth } from '@/hooks/useAuth'
 
 const navItems = [
 	{ title: 'Dashboard', href: '/dashboard', icon: Home },
@@ -28,6 +29,7 @@ export function DashboardSidebar() {
 	const pathname = usePathname()
 	const [isMobile, setIsMobile] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
+	const { user }=useAuth();
 
 	// track mobile width
 	useEffect(() => {
@@ -75,8 +77,8 @@ export function DashboardSidebar() {
 				<div className="flex items-center gap-2">
 					<div className="bg-muted h-8 w-8 rounded-full"></div>
 					<div className="flex flex-col">
-						<span className="text-sm font-medium">John Doe</span>
-						<span className="text-muted-foreground text-xs">Admin</span>
+						<span className="text-sm font-medium">{user.name}</span>
+						<span className="text-muted-foreground text-xs">{user.email}</span>
 					</div>
 				</div>
 			</SidebarFooter>
