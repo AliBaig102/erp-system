@@ -181,7 +181,7 @@ export class PrismaClient<
    * `prisma.customer`: Exposes CRUD operations for the **Customer** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Customers
+    * // Fetch zero or more Page
     * const customers = await prisma.customer.findMany()
     * ```
     */
@@ -2260,7 +2260,7 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Page to fetch.
      */
     orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
     /**
@@ -2272,19 +2272,19 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Page from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Page.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Customers
+     * Count returned Page
     **/
     _count?: true | CustomerCountAggregateInputType
     /**
@@ -2512,15 +2512,15 @@ export namespace Prisma {
     findFirstOrThrow<T extends CustomerFindFirstOrThrowArgs>(args?: SelectSubset<T, CustomerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Customers that matches the filter.
+     * Find zero or more Page that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {CustomerFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Customers
+     * // Get all Page
      * const customers = await prisma.customer.findMany()
      * 
-     * // Get first 10 Customers
+     * // Get first 10 Page
      * const customers = await prisma.customer.findMany({ take: 10 })
      * 
      * // Only select the `id`
@@ -2544,10 +2544,10 @@ export namespace Prisma {
     create<T extends CustomerCreateArgs>(args: SelectSubset<T, CustomerCreateArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Customers.
-     * @param {CustomerCreateManyArgs} args - Arguments to create many Customers.
+     * Create many Page.
+     * @param {CustomerCreateManyArgs} args - Arguments to create many Page.
      * @example
-     * // Create many Customers
+     * // Create many Page
      * const customer = await prisma.customer.createMany({
      *   data: [
      *     // ... provide data here
@@ -2558,17 +2558,17 @@ export namespace Prisma {
     createMany<T extends CustomerCreateManyArgs>(args?: SelectSubset<T, CustomerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Customers and returns the data saved in the database.
-     * @param {CustomerCreateManyAndReturnArgs} args - Arguments to create many Customers.
+     * Create many Page and returns the data saved in the database.
+     * @param {CustomerCreateManyAndReturnArgs} args - Arguments to create many Page.
      * @example
-     * // Create many Customers
+     * // Create many Page
      * const customer = await prisma.customer.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Customers and only return the `id`
+     * // Create many Page and only return the `id`
      * const customerWithIdOnly = await prisma.customer.createManyAndReturn({
      *   select: { id: true },
      *   data: [
@@ -2613,10 +2613,10 @@ export namespace Prisma {
     update<T extends CustomerUpdateArgs>(args: SelectSubset<T, CustomerUpdateArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Customers.
-     * @param {CustomerDeleteManyArgs} args - Arguments to filter Customers to delete.
+     * Delete zero or more Page.
+     * @param {CustomerDeleteManyArgs} args - Arguments to filter Page to delete.
      * @example
-     * // Delete a few Customers
+     * // Delete a few Page
      * const { count } = await prisma.customer.deleteMany({
      *   where: {
      *     // ... provide filter here
@@ -2627,12 +2627,12 @@ export namespace Prisma {
     deleteMany<T extends CustomerDeleteManyArgs>(args?: SelectSubset<T, CustomerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Customers.
+     * Update zero or more Page.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {CustomerUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Customers
+     * // Update many Page
      * const customer = await prisma.customer.updateMany({
      *   where: {
      *     // ... provide filter here
@@ -2646,10 +2646,10 @@ export namespace Prisma {
     updateMany<T extends CustomerUpdateManyArgs>(args: SelectSubset<T, CustomerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Customers and returns the data updated in the database.
-     * @param {CustomerUpdateManyAndReturnArgs} args - Arguments to update many Customers.
+     * Update zero or more Page and returns the data updated in the database.
+     * @param {CustomerUpdateManyAndReturnArgs} args - Arguments to update many Page.
      * @example
-     * // Update many Customers
+     * // Update many Page
      * const customer = await prisma.customer.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
@@ -2659,7 +2659,7 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Customers and only return the `id`
+     * // Update zero or more Page and only return the `id`
      * const customerWithIdOnly = await prisma.customer.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
@@ -2696,15 +2696,15 @@ export namespace Prisma {
 
 
     /**
-     * Count the number of Customers.
+     * Count the number of Page.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerCountArgs} args - Arguments to filter Customers to count.
+     * @param {CustomerCountArgs} args - Arguments to filter Page to count.
      * @example
-     * // Count the number of Customers
+     * // Count the number of Page
      * const count = await prisma.customer.count({
      *   where: {
-     *     // ... the filter for the Customers we want to count
+     *     // ... the filter for the Page we want to count
      *   }
      * })
     **/
@@ -2943,31 +2943,31 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Page to fetch.
      */
     orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Customers.
+     * Sets the position for searching for Page.
      */
     cursor?: CustomerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Page from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Page.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Customers.
+     * Filter by unique combinations of Page.
      */
     distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
   }
@@ -2995,31 +2995,31 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Page to fetch.
      */
     orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Customers.
+     * Sets the position for searching for Page.
      */
     cursor?: CustomerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Page from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Page.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Customers.
+     * Filter by unique combinations of Page.
      */
     distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
   }
@@ -3041,31 +3041,31 @@ export namespace Prisma {
      */
     include?: CustomerInclude<ExtArgs> | null
     /**
-     * Filter, which Customers to fetch.
+     * Filter, which Page to fetch.
      */
     where?: CustomerWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Page to fetch.
      */
     orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Customers.
+     * Sets the position for listing Page.
      */
     cursor?: CustomerWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Page from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Page.
      */
     skip?: number
     distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
@@ -3098,7 +3098,7 @@ export namespace Prisma {
    */
   export type CustomerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Customers.
+     * The data used to create many Page.
      */
     data: CustomerCreateManyInput | CustomerCreateManyInput[]
     skipDuplicates?: boolean
@@ -3117,7 +3117,7 @@ export namespace Prisma {
      */
     omit?: CustomerOmit<ExtArgs> | null
     /**
-     * The data used to create many Customers.
+     * The data used to create many Page.
      */
     data: CustomerCreateManyInput | CustomerCreateManyInput[]
     skipDuplicates?: boolean
@@ -3158,15 +3158,15 @@ export namespace Prisma {
    */
   export type CustomerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Customers.
+     * The data used to update Page.
      */
     data: XOR<CustomerUpdateManyMutationInput, CustomerUncheckedUpdateManyInput>
     /**
-     * Filter which Customers to update
+     * Filter which Page to update
      */
     where?: CustomerWhereInput
     /**
-     * Limit how many Customers to update.
+     * Limit how many Page to update.
      */
     limit?: number
   }
@@ -3184,15 +3184,15 @@ export namespace Prisma {
      */
     omit?: CustomerOmit<ExtArgs> | null
     /**
-     * The data used to update Customers.
+     * The data used to update Page.
      */
     data: XOR<CustomerUpdateManyMutationInput, CustomerUncheckedUpdateManyInput>
     /**
-     * Filter which Customers to update
+     * Filter which Page to update
      */
     where?: CustomerWhereInput
     /**
-     * Limit how many Customers to update.
+     * Limit how many Page to update.
      */
     limit?: number
     /**
@@ -3258,11 +3258,11 @@ export namespace Prisma {
    */
   export type CustomerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Customers to delete
+     * Filter which Page to delete
      */
     where?: CustomerWhereInput
     /**
-     * Limit how many Customers to delete.
+     * Limit how many Page to delete.
      */
     limit?: number
   }
