@@ -2,6 +2,9 @@ import { Input } from './input'
 import { Button, buttonVariants } from './button'
 import { Separator } from './separator'
 import { Skeleton } from './skeleton'
+import { Calendar } from './calendar'
+import { Label } from './label'
+import { Popover, PopoverTrigger, PopoverContent, PopoverAnchor } from './popover'
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './tooltip'
 import {
 	useFormField,
@@ -26,8 +29,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from './dialog'
-
-import { Label } from './label'
 
 import {
 	Sheet,
@@ -66,6 +67,24 @@ import {
 	SidebarTrigger,
 	useSidebar,
 } from './sidebar'
+
+import {
+	DropdownMenu,
+	DropdownMenuPortal,
+	DropdownMenuTrigger,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuLabel,
+	DropdownMenuItem,
+	DropdownMenuCheckboxItem,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubTrigger,
+	DropdownMenuSubContent,
+} from './dropdown-menu'
 
 export {
 	Input,
@@ -128,4 +147,24 @@ export {
 	TooltipTrigger,
 	TooltipContent,
 	TooltipProvider,
+	Calendar,
+	Popover,
+	PopoverTrigger,
+	PopoverContent,
+	PopoverAnchor,
+	DropdownMenu,
+	DropdownMenuPortal,
+	DropdownMenuTrigger,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuLabel,
+	DropdownMenuItem,
+	DropdownMenuCheckboxItem,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubTrigger,
+	DropdownMenuSubContent,
 }
