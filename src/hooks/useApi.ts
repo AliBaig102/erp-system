@@ -104,14 +104,12 @@ export function useApi<T>(baseUrl: string, options: UseApiOptions<T> = {}): ApiH
 			}
 			return response.data
 		} catch (error: unknown) {
+			const errMsg =
+				axios.isAxiosError(error) && error.response?.data ? error.response.data : (error as Error)
 			if (!silent) {
-				const errMsg =
-					axios.isAxiosError(error) && error.response?.data
-						? error.response.data.message
-						: (error as Error).message
-				toast.error(errMsg, toastOptions)
+				toast.error(errMsg.message, toastOptions)
 			}
-			return error
+			return errMsg
 		} finally {
 			setIsLoading(false)
 		}
