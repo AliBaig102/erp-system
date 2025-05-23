@@ -1,21 +1,27 @@
-"use client"
+'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { CalendarIcon, ChevronDown, ChevronRight, Download, FileText, Home, Plus, Printer } from 'lucide-react'
+import {
+	ChevronDown,
+	ChevronRight,
+	Download,
+	FileText,
+	Home,
+	Plus,
+	Printer,
+} from 'lucide-react'
 import {
 	Button,
-	Calendar,
-	DropdownMenu, DropdownMenuContent, DropdownMenuItem,
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
 	DropdownMenuTrigger,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
+
 } from '@/components/ui'
-import { cn } from '@/lib/utils'
-import { format } from 'date-fns'
+import { DatePicker } from '@/components/DatePicker'
 
 const Customers = () => {
-	const [date, setDate] = useState<Date>()
+	const [date, setDate] = useState<Date | null>(null)
 	return (
 		<div>
 			<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center print:hidden">
@@ -33,30 +39,21 @@ const Customers = () => {
 
 				{/* Action Buttons */}
 				<div className="flex flex-wrap items-center gap-2 self-end sm:self-auto">
-					<Button variant="outline" size="sm">
+					<Button variant="outline">
 						<Printer className="mr-2 h-4 w-4" />
 						Print
 					</Button>
 
-					<Popover>
-						<PopoverTrigger asChild>
-							<Button
-								variant="outline"
-								size="sm"
-								className={cn('justify-start text-left font-normal', date && 'text-primary')}
-							>
-								<CalendarIcon className="mr-2 h-4 w-4" />
-								{date ? format(date, 'PPP') : 'Filter by date'}
-							</Button>
-						</PopoverTrigger>
-						<PopoverContent className="w-auto p-0" align="end">
-							<Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-						</PopoverContent>
-					</Popover>
+					<DatePicker
+						classNames={{ container: 'w-fit' }}
+						placeholder={"Filter by date..."}
+						date={date}
+						onChange={(date) => setDate(date!)}
+					/>
 
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button variant="outline" size="sm">
+							<Button variant="outline">
 								<Download className="mr-2 h-4 w-4" />
 								Export
 								<ChevronDown className="ml-2 h-4 w-4" />
@@ -78,8 +75,8 @@ const Customers = () => {
 						</DropdownMenuContent>
 					</DropdownMenu>
 
-					<Button size="sm">
-						<Plus className="mr-2 h-4 w-4" />
+					<Button>
+						<Plus className="mr-1 h-4 w-4" />
 						Create
 					</Button>
 				</div>
