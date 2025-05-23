@@ -1,10 +1,8 @@
 'use client'
 
-import { Home, BarChart2, Users, Settings, Menu } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-
 import {
 	Sidebar,
 	SidebarFooter,
@@ -17,21 +15,22 @@ import {
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
-
-const navItems = [
-	{ title: 'Dashboard', href: '/dashboard', icon: Home },
-	{ title: 'Analytics', href: '/dashboard/analytics', icon: BarChart2 },
-	{ title: 'Users', href: '/dashboard/users', icon: Users },
-	{ title: 'Settings', href: '/dashboard/settings', icon: Settings },
-]
+import { Menu } from 'lucide-react'
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from '@/components/ui/accordion'
+import { sidebarItems } from '@/constants/sidebar-items'
 
 export function DashboardSidebar() {
 	const pathname = usePathname()
 	const [isMobile, setIsMobile] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
-	const { user }=useAuth();
+	const { user } = useAuth()
 
-	// track mobile width
+	// Track mobile width
 	useEffect(() => {
 		const onResize = () => setIsMobile(window.innerWidth < 768)
 		onResize()
@@ -39,7 +38,6 @@ export function DashboardSidebar() {
 		return () => window.removeEventListener('resize', onResize)
 	}, [])
 
-	// this is *your* sidebar content wrapper
 	const SidebarContentWrapper = () => (
 		<>
 			<SidebarHeader className="flex items-center justify-between p-4">
@@ -51,23 +49,54 @@ export function DashboardSidebar() {
 				</div>
 			</SidebarHeader>
 
-			{/* use the aliased imported component here */}
 			<BaseSidebarContent>
 				<SidebarMenu>
-					{navItems.map((item) => (
-						<SidebarMenuItem key={item.href} className={'mx-2'}>
-							<SidebarMenuButton
-								asChild
-								isActive={pathname === item.href}
-								tooltip={item.title}
-								onClick={() => isMobile && setIsOpen(false)}
-								className={'p-3 py-5'}
-							>
-								<Link href={item.href}>
-									<item.icon className="h-5 w-5" />
-									<span>{item.title}</span>
-								</Link>
-							</SidebarMenuButton>
+					{sidebarItems.map((item) => (
+						<SidebarMenuItem key={item.title} className="mx-2">
+							{item.href ? (
+								<SidebarMenuButton
+									asChild
+									isActive={pathname === item.href}
+									tooltip={item.title}
+									onClick={() => isMobile && setIsOpen(false)}
+									className="p-3 py-5"
+								>
+									<Link href={item.href}>
+										{item.icon && item.icon}
+										<span>{item.title}</span>
+									</Link>
+								</SidebarMenuButton>
+							) : (
+								<Accordion type="single" collapsible className="w-full">
+									<AccordionItem value={item.title} className="border-none">
+										<AccordionTrigger
+											className="hover:bg-accent rounded-md p-3 hover:no-underline"
+											onClick={() => isMobile && setIsOpen(true)}
+										>
+											<div className="flex w-full items-center">
+												{item.icon && item.icon}
+												<span>{item.title}</span>
+											</div>
+										</AccordionTrigger>
+										<AccordionContent className="pb-0">
+											{item.subItems?.map((subItem) => (
+												<SidebarMenuButton
+													key={subItem.href}
+													asChild
+													isActive={pathname === subItem.href}
+													className="p-3 py-2 pl-8"
+													onClick={() => isMobile && setIsOpen(false)}
+												>
+													<Link href={subItem.href!}>
+														{subItem.icon && subItem.icon}
+														<span>{subItem.title}</span>
+													</Link>
+												</SidebarMenuButton>
+											))}
+										</AccordionContent>
+									</AccordionItem>
+								</Accordion>
+							)}
 						</SidebarMenuItem>
 					))}
 				</SidebarMenu>
