@@ -107,6 +107,16 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from './select'
+import {
+	Table,
+	TableHeader,
+	TableBody,
+	TableFooter,
+	TableHead,
+	TableRow,
+	TableCell,
+	TableCaption,
+} from './table'
 
 export {
 	Input,
@@ -208,4 +218,12 @@ export {
 	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
+	Table,
+	TableHeader,
+	TableBody,
+	TableFooter,
+	TableHead,
+	TableRow,
+	TableCell,
+	TableCaption,
 }
