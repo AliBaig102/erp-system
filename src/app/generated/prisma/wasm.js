@@ -133,10 +133,38 @@ exports.Prisma.CustomerScalarFieldEnum = {
   name: 'name',
   email: 'email',
   phone: 'phone',
+  city: 'city',
   address: 'address',
+  cnic: 'cnic',
+  CustomerType: 'CustomerType',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'
+};
+
+exports.Prisma.CustomerPaymentScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  originalAmount: 'originalAmount',
+  remainingAmount: 'remainingAmount',
+  paymentMethod: 'paymentMethod',
+  paymentStatus: 'paymentStatus',
+  transactionDate: 'transactionDate',
+  dueDate: 'dueDate',
+  remarks: 'remarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PaymentInstallmentScalarFieldEnum = {
+  id: 'id',
+  paymentId: 'paymentId',
+  amount: 'amount',
+  transactionDate: 'transactionDate',
+  paymentMethod: 'paymentMethod',
+  remarks: 'remarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -159,9 +187,32 @@ exports.Role = exports.$Enums.Role = {
   MODERATOR: 'MODERATOR'
 };
 
+exports.CustomerType = exports.$Enums.CustomerType = {
+  RETAILER: 'RETAILER',
+  WHOLESALER: 'WHOLESALER',
+  DISTRIBUTOR: 'DISTRIBUTOR',
+  CONSUMER: 'CONSUMER'
+};
+
+exports.PaymentMethod = exports.$Enums.PaymentMethod = {
+  CASH: 'CASH',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  MOBILE_PAYMENT: 'MOBILE_PAYMENT',
+  CREDIT: 'CREDIT'
+};
+
+exports.PaymentStatus = exports.$Enums.PaymentStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  PARTIAL: 'PARTIAL'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
-  Customer: 'Customer'
+  Customer: 'Customer',
+  CustomerPayment: 'CustomerPayment',
+  PaymentInstallment: 'PaymentInstallment'
 };
 
 /**
