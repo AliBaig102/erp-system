@@ -13,16 +13,29 @@ export const POST = async (req: NextRequest) => {
 		const cookiesStore = await cookies()
 		const { email, password } = await req.json()
 		if (!email || !password) {
-			return ApiResponse(false, vm.requiredFields, 400, [])
+			return ApiResponse(false, vm.requiredFields, 400, [], {
+				errors: {
+					email: vm.requiredEmail,
+					password: vm.requiredPassword,
+				},
+			})
 		}
 
 		const user = await prisma.user.findFirst({ where: { email } })
 		if (!user) {
-			return ApiResponse(false, vm.userNotFound, 400, [])
+			return ApiResponse(false, vm.userNotFound, 400, [],{
+				errors: {
+					email: vm.userNotFound,
+				}
+			})
 		}
 		const isValidPassword = await validatePassword(password, user.password)
 		if (!isValidPassword) {
-			return ApiResponse(false, vm.invalidPassword, 400, [])
+			return ApiResponse(false, vm.invalidPassword, 400, [],{
+				errors: {
+					password: vm.invalidPassword,
+				},
+			})
 		}
 		const accessToken = createAccessToken({
 			id: user.id,

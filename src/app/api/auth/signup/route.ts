@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server'
 import { ApiResponse } from '@/lib/backend/apiResponse'
 import prisma from '@/lib/prisma'
 import { hashPassword } from '@/lib/backend/auth'
-import {  getLanguage } from '@/lib/backend/serverCookie'
+import { getLanguage } from '@/lib/backend/serverCookie'
 import { authApiData } from '@/data'
 
 export const POST = async (req: NextRequest) => {
@@ -11,11 +11,19 @@ export const POST = async (req: NextRequest) => {
 		const lang = await getLanguage()
 		const vm = authApiData[lang]
 		if (!name || !email || !password) {
-			return ApiResponse(false, vm.requiredFields, 400, [])
+			return ApiResponse(false, vm.requiredFields, 400, [
+				{
+					errors: {
+						name: vm.requiredName,
+						email: vm.requiredEmail,
+						password: vm.requiredPassword,
+					},
+				},
+			])
 		}
 		const user = await prisma.user.findFirst({ where: { email } })
 		if (user) {
-			return ApiResponse(false, vm.userExists, 400, [])
+			return ApiResponse(false, vm.userExists, 400, [], { errors: { email: vm.userExists } })
 		}
 		const newPassword = await hashPassword(password)
 		const newUser = await prisma.user.create({

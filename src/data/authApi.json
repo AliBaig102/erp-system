@@ -1,6 +1,9 @@
 {
   "en": {
     "requiredFields": "All fields are required",
+    "requiredName": "Name is required",
+    "requiredEmail": "Email is required",
+    "requiredPassword": "Password is required",
     "invalidEmail": "Invalid email or password",
     "invalidPassword": "Invalid email or password",
     "userExists": "User already exists",
@@ -11,6 +14,9 @@
   },
   "ur": {
     "requiredFields": "تمام فیلڈز کو بھرنا ضروری ہے",
+    "requiredName": "نام کو بھرنا ضروری ہے",
+    "requiredEmail": "ای میل کو بھرنا ضروری ہے",
+    "requiredPassword": "پاس ورڈ کو بھرنا ضروری ہے",
     "invalidEmail": "ای میل یا پاس ورڈ غلط ہے",
     "invalidPassword": "ای میل یا پاس ورڈ غلط ہے",
     "userExists": "صارف پہلے سے موجود ہے",
