@@ -19,6 +19,20 @@ enum Role {
   MODERATOR
 }
 
+enum Status {
+  ACTIVE
+  INACTIVE
+  PENDING
+  APPROVED
+  REJECTED
+}
+enum CustomerType {
+  RETAILER
+  WHOLESALER
+  DISTRIBUTOR
+  CONSUMER
+}
+
 model User {
   id       Int    @id @default(autoincrement())
   email    String @unique
@@ -37,9 +51,61 @@ model Customer {
   name     String
   email    String?
   phone    String?
+  city     String?
   address  String?
+  cnic     String?
+  CustomerType CustomerType @default(CONSUMER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId   Int
   user     User    @relation(fields: [userId], references: [id])
+  CustomerPayment CustomerPayment[]
+  @@index([userId])
+}
+
+model CustomerPayment {
+  id               Int                @id @default(autoincrement())
+  customerId       Int
+  originalAmount   Decimal            @db.Decimal(12, 2)
+  remainingAmount  Decimal            @db.Decimal(12, 2)
+  paymentMethod    PaymentMethod      @default(CASH)
+  paymentStatus    PaymentStatus      @default(PENDING)
+  transactionDate  DateTime           @default(now())
+  dueDate          DateTime?
+  remarks          String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  customer         Customer           @relation(fields: [customerId], references: [id])
+  installments     PaymentInstallment[]
+
+  @@index([customerId])
+  @@index([paymentStatus])
+}
+
+model PaymentInstallment {
+  id               Int                @id @default(autoincrement())
+  paymentId        Int
+  amount           Decimal            @db.Decimal(12, 2)
+  transactionDate  DateTime           @default(now())
+  paymentMethod    PaymentMethod      @default(CASH)
+  remarks          String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  payment          CustomerPayment    @relation(fields: [paymentId], references: [id])
+
+  @@index([paymentId])
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  MOBILE_PAYMENT
+  CREDIT
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  PARTIAL
 }
