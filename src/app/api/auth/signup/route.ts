@@ -4,23 +4,16 @@ import prisma from '@/lib/prisma'
 import { hashPassword } from '@/lib/backend/auth'
 import { getLanguage } from '@/lib/backend/serverCookie'
 import { authApiData } from '@/data'
+import { requiredFields } from '@/lib/backend/requiredFields'
 
 export const POST = async (req: NextRequest) => {
 	try {
 		const { name, email, password } = await req.json()
 		const lang = await getLanguage()
 		const vm = authApiData[lang]
-		if (!name || !email || !password) {
-			return ApiResponse(false, vm.requiredFields, 400, [
-				{
-					errors: {
-						name: vm.requiredName,
-						email: vm.requiredEmail,
-						password: vm.requiredPassword,
-					},
-				},
-			])
-		}
+
+		const validationError = requiredFields({ name, email, password }, vm);
+		if (validationError) return validationError;
 		const user = await prisma.user.findFirst({ where: { email } })
 		if (user) {
 			return ApiResponse(false, vm.userExists, 400, [], { errors: { email: vm.userExists } })

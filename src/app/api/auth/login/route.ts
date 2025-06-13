@@ -5,6 +5,7 @@ import { createAccessToken, validatePassword } from '@/lib/backend/auth'
 import { cookies } from 'next/headers'
 import { getLanguage } from '@/lib/backend/serverCookie'
 import { authApiData } from '@/data'
+import { requiredFields } from '@/lib/backend/requiredFields'
 
 export const POST = async (req: NextRequest) => {
 	try {
@@ -12,14 +13,8 @@ export const POST = async (req: NextRequest) => {
 		const vm = authApiData[lang]
 		const cookiesStore = await cookies()
 		const { email, password } = await req.json()
-		if (!email || !password) {
-			return ApiResponse(false, vm.requiredFields, 400, [], {
-				errors: {
-					email: vm.requiredEmail,
-					password: vm.requiredPassword,
-				},
-			})
-		}
+		const validationError = requiredFields({ email, password }, vm);
+		if (validationError) return validationError;
 
 		const user = await prisma.user.findFirst({ where: { email } })
 		if (!user) {
